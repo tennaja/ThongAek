@@ -3,12 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-import { useState } from "react";
 import { Inter, Noto_Sans_Thai } from "next/font/google";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 const inter = Inter({ subsets: ["latin"] });
 const notoSansThai = Noto_Sans_Thai({ subsets: ["thai"] });
@@ -53,7 +52,7 @@ const features = [
 ];
 
 export default function Home() {
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  
 
   return (
     <div className={`${inter.className} ${notoSansThai.className} bg-black text-white`}>
@@ -81,7 +80,7 @@ export default function Home() {
 
             ห็นผลจริง รีวิวเพียบ การันตีโดยผู้ใช้จริงที่บอกต่อถึงคุณภาพ
 
-            ให้ "ทองเอก" เป็นตัวช่วยดูแลสุขภาพของคุณวันนี้</p>
+            ให้ ทองเอก เป็นตัวช่วยดูแลสุขภาพของคุณวันนี้</p>
           <button className="mt-6 px-6 py-3 border border-white text-white rounded-xl hover:bg-white hover:text-black transition item-center" >
             Shop Now
           </button>
@@ -142,15 +141,14 @@ export default function Home() {
           className="mt-6"
         >
           {products.map((product, index) => (
-            <SwiperSlide key={product.id}>
+            <SwiperSlide key={index}>
               <div
                 className="bg-gray-900 rounded-xl overflow-hidden shadow-md transition-all border border-gray-700 hover:scale-105"
-                onMouseEnter={() => setHoverIndex(index)}
-                onMouseLeave={() => setHoverIndex(null)}
+                
               >
                 <Image
                   src={product.image}
-                  alt={`Product ${product.id}`}
+                  alt={`Product ${index}`}
                   width={300}
                   height={300}
                   className="w-full h-64 object-cover rounded-t-xl"
